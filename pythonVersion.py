@@ -10,17 +10,21 @@ def f1():
         f1=0
         for x in p:
                 f1+=sum(s**2 for s in x)
-        print("f1",f1)
+        print("f1=",f1)
 
 def f2():
         f2=0
         for n in range(ng):
-                f2+=sum(n*n*p[x][abs(n-x)] for x in range(ng))
-        print("f2",f2)
+                #f2+=sum(n*n*p[x][abs(n-x)] for x in range(ng))
+                for i in range(ng):
+                        f2+=sum(n*n*p[i][j] for j in range(ng) if abs(i-j)==n)
+        print("f2=",f2)
 def f3():
         f3=0
         px=list(map(sum,p))#sum rows
         py=list(map(sum,zip(*p)))#sum cols
+        zip(*p)
+        print(p)
         sigmax=stdev(px)
         sigmay=stdev(py)
         mix=mean(px)
